@@ -1,0 +1,53 @@
+* {
+  padding: 0px;
+  margin: 0;
+  box-sizing: content-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: wheat;
+}
+
+.container {
+  background-color: white;
+  border: 1px solid #d47878;
+  box-shadow: 5px 5px 20px #e47e7e;
+  width: 1200px;
+  height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.box {
+  background-color: #949cce;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  border-radius: 10px;
+  left: 10px;
+  top: 10px;
+}
+
+h1 {
+  position: absolute;
+  top: 7.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.food {
+  background-color: #c5ee0f;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 10px;
+}

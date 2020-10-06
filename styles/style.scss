@@ -4,6 +4,11 @@
     box-sizing: content-box;
 }
 
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
 
 
 
@@ -20,7 +25,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    translate: -50% -50%;
+    transform: translate(-50%, -50%);
     border-radius: 10px;
 }
 
@@ -42,7 +47,7 @@ h1 {
     position: absolute;
     top: 7.5%;
     left: 50%;
-    translate: -50% -50%;
+    transform: translate(-50%, -50%);
 
 }
 
