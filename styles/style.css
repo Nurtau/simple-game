@@ -55,4 +55,52 @@ h1 {
   position: absolute;
   border-radius: 10px;
 }
+
+.control {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: wheat;
+  -webkit-box-shadow: 2px 2px 1px #42534f;
+          box-shadow: 2px 2px 1px #42534f;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-transition: background-color 0.1s;
+  transition: background-color 0.1s;
+}
+
+.control:hover {
+  background-color: hotpink;
+}
+
+.controller {
+  position: absolute;
+  top: 470px;
+  left: 40px;
+  opacity: 0.5;
+}
+
+.w {
+  position: absolute;
+  left: 50px;
+  top: 0px;
+}
+
+.s {
+  position: absolute;
+  left: 50px;
+  top: 50px;
+}
+
+.a {
+  position: absolute;
+  left: 0px;
+  top: 50px;
+}
+
+.d {
+  position: absolute;
+  left: 100px;
+  top: 50px;
+}
 /*# sourceMappingURL=style.css.map */
