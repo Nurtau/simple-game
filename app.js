@@ -7,69 +7,69 @@ let moves = {
 const box = document.querySelector('.box');
 let position = [10, 10];
 let boxSize = 50;
+let isGameOver = false;
 
+//function for transition
+const clickAnim = (object) => {
+    object.addEventListener("transitioncancel", () => {
+        object.style.background = "wheat";
+    });
+    object.style.background = "hotpink";
+    object.ontransitionend = () => {
+        object.style.background = "wheat";
+    }
+}
 
 //function of moves
 
 const goUp = () => {
-    document.querySelector(".w").addEventListener("transitioncancel", () => {
-        document.querySelector(".w").style.background = "wheat";
-    });
-    document.querySelector(".w").style.background = "hotpink";
-    document.querySelector(".w").ontransitionend = () => {
-        document.querySelector(".w").style.background = "wheat";
+    clickAnim(document.querySelector(".w"));
+    if (!isGameOver) {
+        if (position[0] > 0) {
+            position[0] -= 10;
+            box.style.top = `${position[0]}px`;
+        }
     }
-    if (position[0] > 0) {
-        position[0] -= 10;
-        box.style.top = `${position[0]}px`;
-    }
+
 
 
 };
 
 const goDown = () => {
-    document.querySelector(".s").addEventListener("transitioncancel", () => {
-        document.querySelector(".s").style.background = "wheat";
-    });
-    document.querySelector(".s").style.background = "hotpink";
-    document.querySelector(".s").ontransitionend = () => {
-        document.querySelector(".s").style.background = "wheat";
+    clickAnim(document.querySelector(".s"));
+    if (!isGameOver) {
+        if (position[0] < (600 - boxSize)) {
+            position[0] += 10;
+            box.style.top = `${position[0]}px`;
+        }
     }
-    if (position[0] < (600 - boxSize)) {
-        position[0] += 10;
-        box.style.top = `${position[0]}px`;
-    }
+
 };
 
 const goLeft = () => {
-    document.querySelector(".a").addEventListener("transitioncancel", () => {
-        document.querySelector(".a").style.background = "wheat";
-    });
-    document.querySelector(".a").style.background = "hotpink";
-    document.querySelector(".a").ontransitionend = () => {
-        document.querySelector(".a").style.background = "wheat";
-    };
-    if (position[1] > 0) {
-        position[1] -= 10;
-        box.style.left = `${position[1]}px`;
+    clickAnim(document.querySelector(".a"));
+    if (!isGameOver) {
+        if (position[1] > 0) {
+            position[1] -= 10;
+            box.style.left = `${position[1]}px`;
+        }
     }
+
 };
 
 const goRight = () => {
-    document.querySelector(".d").addEventListener("transitioncancel", () => {
-        document.querySelector(".d").style.background = "wheat";
-    });
-    document.querySelector(".d").style.background = "hotpink";
-    document.querySelector(".d").ontransitionend = () => {
-        document.querySelector(".d").style.background = "wheat";
+    clickAnim(document.querySelector(".d"));
+    if (!isGameOver) {
+        if (position[1] < (1200 - boxSize)) {
+            position[1] += 10;
+            box.style.left = `${position[1]}px`;
+        }
     }
-    if (position[1] < (1200 - boxSize)) {
-        position[1] += 10;
-        box.style.left = `${position[1]}px`;
-    }
+
 };
 
 document.addEventListener("keypress", (e) => {
+
     if (e.code === moves.up) {
         goUp();
 
@@ -120,4 +120,61 @@ document.addEventListener("keypress", () => {
         (foodPosition[0] + 20 > position[0] && foodPosition[0] + 20 < position[0] + boxSize && foodPosition[1] + 20 > position[1] && foodPosition[1] + 20 < position[1] + boxSize)) {
         foodPosition = calculateFoodPosition();
     }
+});
+
+
+
+//enemy
+
+let isStarted = false;
+let isStopped = false;
+let enemyPosition = [100, 1250];
+
+const movementOfEnemy = () => {
+    if (Math.abs(enemyPosition[0] - (position[0] + 10)) >= Math.abs(enemyPosition[1] - (position[1] + 10))) {
+        if (enemyPosition[0] - (position[0] + 10) > 0) {
+            enemyPosition[0] -= 10;
+        } else {
+            enemyPosition[0] += 10;
+        }
+        document.querySelector(".enemy").style.top = `${enemyPosition[0]}px`;
+    } else {
+        if (enemyPosition[1] - (position[1] + 10) > 0) {
+            enemyPosition[1] -= 10;
+        } else {
+            enemyPosition[1] += 10;
+        }
+        document.querySelector(".enemy").style.left = `${enemyPosition[1]}px`;
+    }
+
+    if (enemyPosition[0] === position[0] + 10 && enemyPosition[1] === position[1] + 10) {
+        box.style.display = "none";
+        food.style.display = "none";
+        isGameOver = true;
+        const finalScore = parseInt(score.innerText);
+        document.querySelector("h1").innerText = `Game is over. You final score is ${finalScore}`;
+    }
+}
+
+document.addEventListener("keydown", (event) => {
+
+    if (event.code === "Space") {
+        clickAnim(document.querySelector(".space"));
+        isStopped = false;
+        if (!isStarted) {
+            isStarted = true;
+            setInterval(() => {
+                if (!isStopped) {
+                    movementOfEnemy();
+                }
+            }, 100);
+        }
+    }
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.code === "KeyB") {
+        clickAnim(document.querySelector(".b"));
+        isStopped = true;
+    };
 });

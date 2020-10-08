@@ -40,6 +40,18 @@ body {
   top: 10px;
 }
 
+.target {
+  position: absolute;
+  height: 5px;
+  width: 5px;
+  border-radius: 5px;
+  left: 10px;
+  top: 10px;
+  background-color: #ffee00;
+  -webkit-box-shadow: 1px 1px 5px #d66406;
+          box-shadow: 1px 1px 5px #d66406;
+}
+
 h1 {
   position: absolute;
   top: 7.5%;
@@ -73,6 +85,19 @@ h1 {
   background-color: hotpink;
 }
 
+.enemy {
+  background-color: #ca1717;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 100px;
+  left: 1250px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
 .controller {
   position: absolute;
   top: 470px;
@@ -101,6 +126,19 @@ h1 {
 .d {
   position: absolute;
   left: 100px;
+  top: 50px;
+}
+
+.space {
+  position: absolute;
+  left: 420px;
+  top: 50px;
+  width: 250px;
+}
+
+.b {
+  position: absolute;
+  left: 680px;
   top: 50px;
 }
 /*# sourceMappingURL=style.css.map */
