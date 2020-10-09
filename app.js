@@ -5,7 +5,7 @@ let moves = {
     right: "KeyD"
 };
 const box = document.querySelector('.box');
-let position = [10, 10];
+let position = [20, 20];
 let boxSize = 50;
 let isGameOver = false;
 
@@ -26,7 +26,7 @@ const goUp = () => {
     clickAnim(document.querySelector(".w"));
     if (!isGameOver) {
         if (position[0] > 0) {
-            position[0] -= 10;
+            position[0] -= 20;
             box.style.top = `${position[0]}px`;
         }
     }
@@ -39,7 +39,7 @@ const goDown = () => {
     clickAnim(document.querySelector(".s"));
     if (!isGameOver) {
         if (position[0] < (600 - boxSize)) {
-            position[0] += 10;
+            position[0] += 20;
             box.style.top = `${position[0]}px`;
         }
     }
@@ -50,7 +50,7 @@ const goLeft = () => {
     clickAnim(document.querySelector(".a"));
     if (!isGameOver) {
         if (position[1] > 0) {
-            position[1] -= 10;
+            position[1] -= 20;
             box.style.left = `${position[1]}px`;
         }
     }
@@ -61,7 +61,7 @@ const goRight = () => {
     clickAnim(document.querySelector(".d"));
     if (!isGameOver) {
         if (position[1] < (1200 - boxSize)) {
-            position[1] += 10;
+            position[1] += 20;
             box.style.left = `${position[1]}px`;
         }
     }
